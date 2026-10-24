@@ -1,0 +1,25 @@
+{
+  "name": "defindex",
+  "owner": {
+    "name": "DeFindex",
+    "email": "dev@paltalabs.io"
+  },
+  "metadata": {
+    "description": "DeFindex skills for AI coding agents: yield infrastructure for neobanks, fintechs and wallets"
+  },
+  "plugins": [
+    {
+      "name": "defindex",
+      "source": "./",
+      "description": "DeFindex skills and MCP servers: discover vaults, build deposits and withdrawals, read positions, administer and create vaults, Stable APY and Boost",
+      "version": "2.0.0",
+      "author": {
+        "name": "DeFindex"
+      },
+      "homepage": "https://docs.defindex.io",
+      "repository": "https://github.com/defindex-io/defindex-skill",
+      "license": "MIT",
+      "keywords": ["defindex", "yield", "vaults", "earn", "stellar", "defi"]
+    }
+  ]
+}

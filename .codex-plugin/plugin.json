@@ -1,0 +1,30 @@
+{
+  "name": "defindex",
+  "version": "2.0.0",
+  "description": "DeFindex skills and MCP servers: discover vaults, build deposits and withdrawals, read positions, administer and create vaults, Stable APY and Boost",
+  "author": {
+    "name": "DeFindex",
+    "url": "https://defindex.io"
+  },
+  "homepage": "https://docs.defindex.io",
+  "repository": "https://github.com/defindex-io/defindex-skill",
+  "license": "MIT",
+  "keywords": ["defindex", "yield", "vaults", "earn", "stellar", "soroban", "defi", "deposit", "withdraw", "stable-apy", "boost"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "DeFindex",
+    "shortDescription": "Yield vaults for neobanks, fintechs and wallets",
+    "longDescription": "Skills and documentation for integrating DeFindex: discover vaults, build deposit and withdraw transactions, show earn balances, administer and create vaults, Stable APY and Boost. Covers the call sequence per flow, units and shares, error handling and production hardening.",
+    "developerName": "DeFindex",
+    "category": "Developer Tools",
+    "capabilities": ["Read"],
+    "websiteURL": "https://defindex.io",
+    "defaultPrompt": [
+      "Add a DeFindex earn balance to my wallet backend.",
+      "Build a deposit of 100 USDC into a DeFindex vault for G...",
+      "Withdraw everything a user holds in a DeFindex vault.",
+      "Which DeFindex vaults are live and what APY do they pay?"
+    ]
+  }
+}

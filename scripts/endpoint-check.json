@@ -1,0 +1,5 @@
+{
+  "specUrl": "https://api.defindex.io/api-json",
+  "apiHost": "api.defindex.io",
+  "scan": ["skills", "examples/src", "evals", "README.md"]
+}
