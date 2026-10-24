@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "defindex-docs": {
+      "type": "http",
+      "url": "https://docs.defindex.io/mcp"
+    },
+    "defindex": {
+      "type": "http",
+      "url": "https://api.defindex.io/mcp",
+      "headers": {
+        "Authorization": "Bearer ${DEFINDEX_API_KEY:-}"
+      }
+    }
+  }
+}

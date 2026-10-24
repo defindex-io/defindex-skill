@@ -1,0 +1,26 @@
+# Paths the skills may name although the public OpenAPI does not list them.
+# One path per line; the reason goes in the comment above it. Keep this list short.
+
+# The trading MCP endpoint. It speaks MCP, not REST, so it is not in the OpenAPI.
+/mcp
+
+# /docs redirects to the API reference on docs.defindex.io; /api-json is the spec itself.
+/docs
+/api-json
+
+# Stable APY and Boost. Served by the API (src/stabilizer/stabilizer.controller.ts) but hidden from
+# Swagger with @ApiExcludeController, and documented at
+# https://docs.defindex.io/integration-guide/stable-apy. Remove these once the routes are in the
+# spec (defindex-io/docs#19, Phase 2: "Add the /stabilizer/... endpoints to the spec").
+/stabilizer/{vaultAddress}
+/stabilizer/{vaultAddress}/status
+/stabilizer/{vaultAddress}/register
+/stabilizer/{vaultAddress}/target-apy
+/stabilizer/{vaultAddress}/fee-bounds
+/stabilizer/{vaultAddress}/exit
+/stabilizer/{vaultAddress}/boost/deposit
+
+# Not API paths: slash commands named in the README and the deprecated defindex-api skill.
+/defindex-api
+/plugins
+/plugin

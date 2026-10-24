@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # Daily, so drift introduced by an API release fails here even without a commit.
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+jobs:
+  endpoints:
+    name: Skills match the live OpenAPI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/check-endpoints.mjs --coverage
+
+  manifests:
+    name: Plugin manifests parse
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          for f in .mcp.json .claude-plugin/plugin.json .claude-plugin/marketplace.json \
+                   .codex-plugin/plugin.json .agents/plugins/marketplace.json; do
+            jq empty "$f" && echo "ok $f"
+          done
+      - name: Every skill has a name and a description
+        run: |
+          for f in skills/*/SKILL.md; do
+            dir=$(basename "$(dirname "$f")")
+            grep -q "^name: ${dir}$" "$f" || { echo "$f: name must be ${dir}"; exit 1; }
+            grep -q '^description: ' "$f" || { echo "$f: missing description"; exit 1; }
+          done
+
+  examples:
+    name: Examples typecheck
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: examples
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: examples/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - name: Keyless smoke run against mainnet
+        run: npm run discover -- --mainnet

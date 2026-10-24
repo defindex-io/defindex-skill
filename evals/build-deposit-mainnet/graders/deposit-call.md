@@ -1,0 +1,5 @@
+---
+type: regex
+pattern: "/vault/CBNKCU3HGFKHFOF7JTGXQCNKE3G3DXS5RDBQUKQMIIECYKXPIOUGB2S3/deposit"
+target: trace
+---
